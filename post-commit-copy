@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# 이전 이미지 버전 조회
+make_cookie_previous_version=$(docker images makeimage --format "{{.Tag}}" | sort -n | tail -n 1)
+display_cookie_previous_version=$(docker images displayimage --format "{{.Tag}}" | sort -n | tail -n 1)
+# 새로운 태그 번호 계산
+if [ -z "$make_cookie_previous_version" ]; then
+    make_new_version=0
+else
+    make_new_version=$((make_cookie_previous_version + 1))
+fi
+
+if [ -z "$display_cookie_previous_version" ]; then
+    display_new_version=0
+else
+    display_new_version=$((display_cookie_previous_version + 1))
+fi
+
+
+# 도커 이미지 빌드
+docker build -f Dockerfile.make -t makeimage:$make_new_version .
+docker build -f Dockerfile.display -t displayimage:$display_new_version .
+
+#!/bin/sh
+
+# post-commit 훅 스크립트
+
+# 서비스가 존재하는지 확인
+if docker service ls --format '{{.Name}}' | grep -q fortunecookieservice; then
+    # 도커 스웜 서비스 업데이트
+    echo "Service Update"
+    docker service update --image displayimage:$display_new_version --update-parallelism 1 --update-delay 5s fortunecookieservice
+else
+    # 도커 스웜 서비스 생성
+    echo "Service Create"
+    docker service create -t --mount type=bind,source=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data,target=./data -p 5000:5000 --replicas=2 --name fortunecookieservice displayimage:$display_new_version
+fi

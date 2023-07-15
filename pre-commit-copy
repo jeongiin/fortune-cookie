@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# pre-commit 훅 스크립트
+
+# 변경된 파일 목록 가져오기
+files=$(git diff --cached --name-only --diff-filter=ACM)
+
+# 테스트 실행
+echo "Running Data Load Test..."
+cd app
+python -m unittest test.py
+
+if [ $? -ne 0 ]; then
+    echo "Unit tests failed. Commit aborted."
+    exit 1
+fi
+
+
+exit 0
