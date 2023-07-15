@@ -20,6 +20,9 @@ jobs:
 
     - name: Install dependencies
       run: pip install flask
+      
+    - name: Set PYTHONPATH
+      run: echo "export PYTHONPATH=$PYTHONPATH:$(pwd)/app" >> $GITHUB_ENV
           
     - name: Run tests
       run: python -m unittest app/test.py
