@@ -5,6 +5,6 @@ WORKDIR /app
 COPY app/utils.py .
 COPY app/cookie_maker.py .
 ENV LOGPATH='/data'
-ENV DATAPAHT='/data'
+ENV DATAPATH='/data'
 ENTRYPOINT ["python3"]
 CMD ["cookie_maker.py"]

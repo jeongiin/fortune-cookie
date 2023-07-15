@@ -6,6 +6,6 @@ COPY app/utils.py .
 COPY app/main.py .
 RUN pip3 install flask
 ENV LOGPATH='/data'
-ENV DATAPAHT='/data'
+ENV DATAPATH='/data'
 ENTRYPOINT ["python3"]
 CMD ["main.py"]
