@@ -1,4 +1,4 @@
-FROM bitnami/pytorch:latest
+FROM python:3.9
 LABEL maintainer "jeongin <jeongin@naver.com>"
 
 WORKDIR /app
