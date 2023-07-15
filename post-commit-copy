@@ -33,5 +33,6 @@ if docker service ls --format '{{.Name}}' | grep -q fortunecookieservice; then
 else
     # 도커 스웜 서비스 생성
     echo "Service Create"
-    docker service create -t --mount type=bind,source=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data,target=./data -p 5000:5000 --replicas=2 --name fortunecookieservice displayimage:$display_new_version
+    docker service create -t --mount type=bind,source=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data,\
+    target=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data -p 5000:5000 --replicas=2 --name fortunecookieservice displayimage:$display_new_version
 fi
