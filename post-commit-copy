@@ -16,10 +16,13 @@ else
     display_new_version=$((display_cookie_previous_version + 1))
 fi
 
+echo "Docker Build ..."
 
 # 도커 이미지 빌드
 docker build -f Dockerfile.make -t makeimage:$make_new_version .
+echo "Makeimage build OK"
 docker build -f Dockerfile.display -t displayimage:$display_new_version .
+echo "Displayimage build OK"
 
 #!/bin/sh
 
