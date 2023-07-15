@@ -8,4 +8,4 @@ RUN pip3 install flask
 ENV LOGPATH='/data'
 ENV DATAPAHT='/data'
 ENTRYPOINT ["python3"]
-CMD ["main.py"]
+CMD ["python" "main.py"]

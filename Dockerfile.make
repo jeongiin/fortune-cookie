@@ -7,4 +7,4 @@ COPY app/cookie_maker.py .
 ENV LOGPATH='/data'
 ENV DATAPAHT='/data'
 ENTRYPOINT ["python3"]
-CMD ["cookie_maker.py"]
+CMD ["python" "cookie_maker.py"]
