@@ -10,7 +10,7 @@ def check_existing_fortune(output_file_path):
         with open(output_file_path, "r", encoding="utf-8") as file:
             for line in file:
                 if today in line:
-                    return True
+                    return True 
     return False
 
 # 랜덤으로 한 문구 선택
