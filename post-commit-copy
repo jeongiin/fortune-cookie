@@ -16,13 +16,10 @@ else
     display_new_version=$((display_cookie_previous_version + 1))
 fi
 
-echo "Docker Build ..."
 
 # 도커 이미지 빌드
 docker build -f Dockerfile.make -t makeimage:$make_new_version .
-echo "Makeimage build OK"
 docker build -f Dockerfile.display -t displayimage:$display_new_version .
-echo "Displayimage build OK"
 
 #!/bin/sh
 
@@ -37,5 +34,6 @@ else
     # 도커 스웜 서비스 생성
     echo "Service Create"
     docker service create -t --mount type=bind,source=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data,\
-    target=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data -p 5000:5000 --replicas=2 --name fortunecookieservice displayimage:$display_new_version
+    target=/Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data -p 5000:5000 \
+    --replicas=2 --name fortunecookieservice displayimage:$display_new_version
 fi
