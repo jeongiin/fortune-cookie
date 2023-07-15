@@ -22,28 +22,33 @@
 $ git clone https://github.com/jeongiin/fortune-cookie.git
 ```
 
-### 2. Docker
+### 2. Docker Build
 
 ```
 $ docker build -t make:latest -f Dockerfile.make .
-$ docker run -it -v /Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data:/data make:latest
-```
-
-```
-$ docker build -t make:latest -f Dockerfile.make .
-$ docker run -it -v /Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data:/data -p 80:80 make:latest
-```
-
 $ docker build -t dp:latest -f Dockerfile.display .
+```
+
+### 3-1. Docker Run
+
+```
+$ docker run -it -v ./data:/data make:latest
 $ docker run -it -v ./data:/data -p 5000:5000 dp:latest
+```
 
-### 3. 127.0.0.0:5000 에 접속
+### 3-2. Docker Service
 
-### 4. 오늘의 행운 멘트를 확인
+```
+$ docker service create -t --mount type=bind,source=./data,target=/data -p 5000:5000 --replicas=2 --name fortunecookieservice dp
+```
+
+### 4. http://127.0.0.1:5000/ 에 접속
+
+### 5. 오늘의 행운 멘트를 확인
 
 ### (Option) 오류 해결 과정
 
-- m1에서만 나타나는 문제인지는 모르겠으나 수업에서 가르쳐주신 수정전 명령어로 입력 시 절대 경로 관련 오류가 나서 수정해주었습니다.
+- m1에서만 나타나는 문제인지는 모르겠으나 수업에서 가르쳐주신 수정전 명령어로 입력 시 절대 경로 관련 오류가 나서 수정해주었습니다. 아래 예시 외 다른 경로도 모두 절대 경로로 설정하였습니다.
 
 ```
 # 수정전
