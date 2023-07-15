@@ -35,8 +35,20 @@ $ docker run -it -v /Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/da
 ```
 
 $ docker build -t dp:latest -f Dockerfile.display .
-$ docker run -it -v /Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data:/data -p 5000:5000 dp:latest
+$ docker run -it -v ./data:/data -p 5000:5000 dp:latest
 
 ### 3. 127.0.0.0:5000 에 접속
 
 ### 4. 오늘의 행운 멘트를 확인
+
+### (Option) 오류 해결 과정
+
+- m1에서만 나타나는 문제인지는 모르겠으나 수업에서 가르쳐주신 수정전 명령어로 입력 시 절대 경로 관련 오류가 나서 수정해주었습니다.
+
+```
+# 수정전
+$ docker run -it -v ./data:/data -p 5000:5000 dp:latest
+
+# 수정후 : 정확한 절대 경로를 입력
+$ docker run -it -v /Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data:/data -p 5000:5000 dp:latest
+```
