@@ -28,8 +28,5 @@ jobs:
       run: touch app/__init__.py
       
     - name: Run tests
-      run: python -m unittest app/utils.py
-      
-    - name: Run tests
       run: python -m unittest app/test.py
 
