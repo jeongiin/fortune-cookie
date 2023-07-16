@@ -1,4 +1,5 @@
 # 오늘의 포춘쿠키 서비스 🥠
+![image](https://github.com/jeongiin/fortune-cookie/assets/48753785/d546cda7-80a8-4a34-a736-da90ed4f8b78)
 
 - 50개의 포춘쿠키 멘트 중 하루의 1개, 랜덤으로 화면에 표시됩니다.
 - 한 번 실행하여 log파일(my_fortunes.txt)에 저장된 경우, 하루가 지나기 전 내용이 바뀌지 않습니다.
@@ -8,11 +9,13 @@
 
 - pre-commit : app/test.py 를 실행
 - post-commit : 자동으로 도커 이미지 및 서비스 업데이트
-- [이미지]
+![image](https://github.com/jeongiin/fortune-cookie/assets/48753785/af470579-1af3-4b18-97b7-a7df688dbded)
 
-## github action 사용 증명
+## github action
 
-- [이미지]
+- python_test_main.yml : data/data_test.py 를 실행하여 데이터가 있는 지 확인
+ <img width="1335" alt="image" src="https://github.com/jeongiin/fortune-cookie/assets/48753785/16c6ac24-10d7-4e55-b11a-3d2ef8c6afea">
+
 
 ## 서비스 실행 방법
 
