@@ -13,6 +13,9 @@
 
 ## github action
 
+- python_test_main.yml : data/data_test.py 를 실행하여 데이터가 있는 지 확인
+- <img width="1335" alt="image" src="https://github.com/jeongiin/fortune-cookie/assets/48753785/16c6ac24-10d7-4e55-b11a-3d2ef8c6afea">
+
 
 ## 서비스 실행 방법
 
