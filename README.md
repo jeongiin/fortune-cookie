@@ -50,6 +50,9 @@ $ docker service create -t --mount type=bind,source=./data,target=/data -p 5000:
 ### 5. 오늘의 행운 멘트를 확인
 
 ### (Option) 오류 해결 과정
+```
+docker: Error response from daemon: create ./data/: "./data/" includes invalid characters for a local volume name, only "[a-zA-Z0-9][a-zA-Z0-9_.-]" are allowed. If you intended to pass a host directory, use absolute path.
+```
 
 - m1에서만 나타나는 문제인지는 모르겠으나 수업에서 가르쳐주신 수정전 명령어로 입력 시 절대 경로 관련 오류가 나서 수정해주었습니다. 아래 예시 외 다른 경로도 모두 절대 경로로 설정하였습니다.
 
@@ -59,4 +62,7 @@ $ docker run -it -v ./data:/data -p 5000:5000 dp:latest
 
 # 수정후 : 정확한 절대 경로를 입력
 $ docker run -it -v /Users/timdalxx/2023_PROJECT/skt_flyai_etc/fortune-cookie/data:/data -p 5000:5000 dp:latest
+
+# 강사님께서 알려주신 방법 : $(pwd)
+$ docker run -it -v $(pwd)/data/:/data make
 ```
